@@ -1,6 +1,4 @@
-import React from 'react';
-
-// import { Container } from './styles';
+import './styles/global.css'
 
 function App() {
   return <h1>Hello World</h1>
