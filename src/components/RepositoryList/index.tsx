@@ -1,19 +1,30 @@
 import '../../styles/repositories.scss'
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import RepositoryItem from '../RepositoryItem';
 
-// https://api.github.com/users/srsantosdev/repos
+type Repository = {
+  id: string;
+  name: string;
+  description: string;
+  html_url: string;
+}
 
 function RepositoryList() {
   const [loading, setLoading] = useState(true)
-  const [repositories, setRepositories] = useState([])
+  const [repositories, setRepositories] = useState<Repository[]>([])
 
   useEffect(() => {
     axios.get('https://api.github.com/users/srsantosdev/repos')
       .then(response => setRepositories(response.data))
+      .finally(() => setLoading(false))
   }, [])
+
+  if (loading) {
+    return <h3>Carregando...</h3>
+  }
 
   return (
     <section className="repository-list">
