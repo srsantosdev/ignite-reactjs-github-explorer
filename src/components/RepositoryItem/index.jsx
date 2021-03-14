@@ -1,10 +1,10 @@
-function RepositoryItem({ name, description, link }) {
+function RepositoryItem({ repository }) {
   return (
     <li>
-      <strong>{name}</strong>
-      <p>{description}</p>
+      <strong>{repository.name}</strong>
+      <p>{repository.description}</p>
 
-      <a href={link}>
+      <a href={repository.html_url}>
         Acessar repositório
       </a>
     </li>
